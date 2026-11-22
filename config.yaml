@@ -59,15 +59,14 @@ sources:
   - id: professionalsecrets
     name: Professional Secrets
     type: auto
-    base_url: https://professionalsecrets.se
+    base_url: https://www.professionalsecrets.se
     groups: [pans]
     pages:
-      - https://professionalsecrets.se/
-      - https://professionalsecrets.se/collections/all
-      - https://professionalsecrets.se/search?q=kolst%C3%A5l
+      - https://www.professionalsecrets.se/
+      - https://www.professionalsecrets.se/search?q=kolst%C3%A5l
     promo_pages:
-      - https://professionalsecrets.se/collections/sale
-      - https://professionalsecrets.se/pages/kampanj
+      - https://www.professionalsecrets.se/collections/sale
+      - https://www.professionalsecrets.se/pages/kampanj
 
   - id: bergspotter
     name: Bergs Potter

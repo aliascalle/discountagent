@@ -109,6 +109,62 @@ def now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
+DEBUG = False
+PLATFORM_HINTS = {
+    "Shopify": "cdn.shopify.com", "WooCommerce": "woocommerce", "WordPress": "wp-content",
+    "Centra": "centra", "Magento": "magento", "PrestaShop": "prestashop", "Abicart": "abicart",
+    "Quickbutik": "quickbutik", "Wix": "wix.com", "Squarespace": "squarespace", "Next.js": "__NEXT_DATA__",
+    "Nuxt": "__NUXT__", "Litium": "litium", "Askås": "askas", "Ehandel.se": "ehandel", "Jetshop/Norce": "jetshop",
+    "Starweb": "starweb", "Shopware": "shopware", "Vue/Nuxt": "data-v-", "Cloudflare": "cf-chl",
+    "Klarna": "klarna", "Voyado": "voyado", "Sitoo": "sitoo", "Lightspeed": "lightspeed",
+}
+
+
+def describe_page(url: str, resp: requests.Response) -> None:
+    """--debug: print what a page contains, so the readers can be tuned from the log."""
+    body = resp.text or ""
+    low = body.lower()
+    print(f"\n  [debug] {url}")
+    print(f"    status={resp.status_code} final={resp.url} type={resp.headers.get('Content-Type')} bytes={len(body)}")
+    hdrs = {k: v for k, v in resp.headers.items()
+            if k.lower() in ("server", "x-powered-by", "x-shopid", "x-generator", "via", "cf-ray", "x-cache")}
+    print(f"    headers={hdrs} cookies={sorted(resp.cookies.keys())[:10]}")
+    print(f"    platform hints={[n for n, h in PLATFORM_HINTS.items() if h.lower() in low]}")
+    if resp.status_code >= 400 or "html" not in resp.headers.get("Content-Type", ""):
+        start = " ".join(body[:400].split())
+        print(f"    body start: {start!r}")
+        return
+    soup = BeautifulSoup(resp.content, "html.parser")
+    print(f"    title={soup.title.get_text(strip=True)[:100] if soup.title else None!r}")
+    print(f"    json-ld types={[_types(n) for n in _jsonld_nodes(soup)][:15]}")
+    metas = [(m.get("property") or m.get("itemprop") or m.get("name"), m.get("content"))
+             for m in soup.find_all("meta") if re.search(r"price|currency|product", str(m.get("property") or m.get("itemprop") or m.get("name") or ""), re.I)]
+    print(f"    price metas={metas[:10]}")
+    micro = [(el.name, el.get("itemprop"), el.get("content") or el.get_text(" ", strip=True)[:60])
+             for el in soup.find_all(attrs={"itemprop": re.compile(r"price|offers|name", re.I)})][:10]
+    print(f"    microdata={micro}")
+    priced = []
+    for el in soup.find_all(class_=re.compile(r"price|pris", re.I)):
+        t = el.get_text(" ", strip=True)
+        if t and re.search(r"\d", t) and len(t) < 80 and t not in priced:
+            priced.append(t)
+    print(f"    elements with 'price' class={priced[:12]}")
+    data_attrs = sorted({a for el in soup.find_all(True) for a in el.attrs if re.search(r"price|product", a, re.I)})[:15]
+    print(f"    data attributes={data_attrs}")
+    scripts = []
+    for sc in soup.find_all("script"):
+        txt = sc.string or ""
+        if re.search(r"\bprice\b", txt, re.I) and not sc.get("type") == "application/ld+json":
+            m = re.search(r".{0,120}\bprice\b.{0,160}", txt, re.I | re.S)
+            scripts.append((sc.get("id") or sc.get("type") or sc.get("src") or "inline", re.sub(r"\s+", " ", m.group(0))))
+    print(f"    scripts mentioning price ({len(scripts)}): {scripts[:4]}")
+    kr = re.findall(r"[^<>]{0,40}\d[\d\s.,]*\s?(?:kr|SEK|DKK|:-)[^<>]{0,20}", body)
+    kr = [" ".join(k.split()) for k in kr[:6]]
+    print(f"    text with 'kr' ({len(kr)}): {kr}")
+    links = [a["href"] for a in soup.find_all("a", href=True)]
+    print(f"    {len(links)} links, sample: {links[:25]}")
+
+
 class Fetcher:
     """requests.Session with a polite delay, retries and a small cache."""
 
@@ -126,6 +182,8 @@ class Fetcher:
             time.sleep(self.delay * (attempt + 1))
             try:
                 resp = self.session.get(url, timeout=TIMEOUT)
+                if DEBUG and attempt == 0:
+                    describe_page(url, resp)
                 if resp.status_code in (429, 500, 502, 503, 504) and attempt == 0:
                     last_error = f"HTTP {resp.status_code}"
                     continue
@@ -737,7 +795,12 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true", help="print the email, don't send or save anything")
     ap.add_argument("--list-all", action="store_true", help="print every product found, matched or not")
     ap.add_argument("--test-email", action="store_true", help="only send a test email")
+    ap.add_argument("--debug", action="store_true",
+                    help="print details of every page fetched (implies --dry-run and --list-all)")
     args = ap.parse_args()
+    if args.debug:
+        global DEBUG
+        DEBUG = args.dry_run = args.list_all = True
 
     if args.test_email:
         send_email("Discount agent: test email",
