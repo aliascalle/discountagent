@@ -7,8 +7,10 @@ It runs on GitHub's computers for free (GitHub Actions), so your own computer ca
 
 | Product | Where |
 |---|---|
-| Professional Secrets carbon steel pans | professionalsecrets.se, Prisjakt |
-| Bergs Potter *Copenhagen*, green and yellow, 21 cm and 25 cm | bergspotter.com, Prisjakt, Royal Design, Nordic Nest, Illums Bolighus |
+| Professional Secrets carbon steel pans | Professional Secrets' own shop (shop-ps.se), Prisjakt* |
+| Bergs Potter *Copenhagen*, green and yellow, 21 cm and 25 cm | Royal Design, Nordic Nest, bergspotter.com*, Prisjakt* |
+
+\* bergspotter.com and Prisjakt show a "checking your browser" page to robots, so they are usually skipped.
 
 **When you get an email**
 

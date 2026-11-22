@@ -397,6 +397,9 @@ def products_from_jsonld(soup: BeautifulSoup, page_url: str, source: dict) -> li
         for offer in offers:
             price = offer.get("price", offer.get("lowPrice"))
             spec = offer.get("priceSpecification")
+            if isinstance(spec, list):  # e.g. Nordic Nest: [{price}, {price, priceType: StrikethroughPrice}]
+                spec = next((x for x in spec if isinstance(x, dict) and x.get("price") is not None
+                             and not re.search(r"ListPrice|StrikethroughPrice", str(x.get("priceType", "")))), None)
             if price is None and isinstance(spec, dict):
                 price = spec.get("price")
             variant = " ".join(variant_bits)
@@ -447,9 +450,10 @@ def products_from_meta(soup: BeautifulSoup, page_url: str, source: dict) -> list
 
 
 PRICE_KEYS = ("salesPriceInclVat", "salePrice", "currentPrice", "finalPrice", "sellingPrice", "priceInclVat",
-              "amount", "value", "price", "current")
+              "inclVat", "amount", "value", "price", "current")
 REGULAR_KEYS = ("recommendedPriceInclVat", "regularPriceInclVat", "regularPrice", "originalPrice", "listPrice",
-                "compareAtPrice", "compare_at_price", "previousPrice", "beforePrice", "ordinaryPrice", "original")
+                "compareAtPrice", "compare_at_price", "previousPrice", "beforePrice", "ordinaryPrice", "original",
+                "regular")
 NAME_KEYS = ("name", "title", "productName", "displayName")
 URL_KEYS = ("url", "href", "link", "uri", "path", "canonicalUrl", "productUrl", "slug")
 VARIANT_KEYS = ("variantName", "variant", "color", "colour", "size")
@@ -545,7 +549,7 @@ def products_from_text(soup: BeautifulSoup, page_url: str, source: dict) -> list
     """Last resort for simple sites: read 'NU 449kr (ord 749kr)' style prices from the page text."""
     for tag in soup(["script", "style", "noscript", "header", "footer", "nav"]):
         tag.decompose()
-    text = " ".join(soup.get_text(" ").split())
+    text = " ".join(soup.get_text(" ").replace("\u200b", "").split())
     now = TEXT_NOW_RE.search(text)
     if now:
         price = now.group(1)
@@ -577,14 +581,15 @@ def read_html(f: Fetcher, source: dict, watches: list[Watch]) -> list[dict]:
     max_pages = int(source.get("max_product_pages", 25))
     note = (lambda m: print(f"  note: {m}")) if source.get("optional") else warn
 
-    items, candidates = [], []
+    items, listing_items, candidates = [], [], []
     for page in pages:
         try:
             soup = f.soup(page)
         except Exception as exc:
             note(f"{source['name']}: {exc}")
             continue
-        items += products_from_jsonld(soup, page, source) or products_from_embedded_json(soup, page, source)
+        items += products_from_jsonld(soup, page, source)
+        listing_items += products_from_embedded_json(soup, page, source)
         host = urlparse(page).netloc
         # product links listed in JSON-LD ItemLists (search/category pages)
         for node in _jsonld_nodes(soup):
@@ -595,6 +600,8 @@ def read_html(f: Fetcher, source: dict, watches: list[Watch]) -> list[dict]:
                     candidates.append(href)
         for a in soup.find_all("a", href=True):
             href = urljoin(page, a["href"]).split("#")[0]
+            if source.get("ignore_query"):  # same page linked once per colour/size variant
+                href = href.split("?")[0]
             if urlparse(href).netloc != host or href in candidates or href in pages:
                 continue
             text = f"{a.get_text(' ', strip=True)} {urlparse(href).path}"
@@ -619,6 +626,8 @@ def read_html(f: Fetcher, source: dict, watches: list[Watch]) -> list[dict]:
         if not found and source.get("text_prices"):
             found = products_from_text(soup, url, source)
         items += found
+    if not items:
+        items = listing_items  # only use data embedded in list pages when product pages gave nothing
     print(f"  HTML pages: {len(pages)} listing pages, {len(candidates[:max_pages])} product pages, {len(items)} prices")
     return items
 

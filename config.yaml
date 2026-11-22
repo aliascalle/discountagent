@@ -63,13 +63,16 @@ sources:
     base_url: https://shop-ps.se
     currency: SEK
     groups: [pans]
-    optional: true
     promo_pages:
       - https://shop-ps.se/collections/bastsaljare
+      - https://www.professionalsecrets.se/
 
-  # Their main site professionalsecrets.se shows prices as text ("NU 449kr (ord 749kr)").
+  # Backup: their main site professionalsecrets.se shows the same prices as text
+  # ("NU 449kr (ord 749kr)"). Turned off because shop-ps.se above is more exact.
+  # Set enabled: true if shop-ps.se ever stops working.
   - id: professionalsecrets
     name: Professional Secrets
+    enabled: false
     type: html
     text_prices: true
     currency: SEK
@@ -110,34 +113,20 @@ sources:
     type: html
     optional: true
     groups: [bergs]
+    max_product_pages: 40
     pages:
-      - https://royaldesign.se/serie/bergs-potter-copenhagen
-      - https://royaldesign.se/bergs-potter
-      - https://royaldesign.se/search?q=bergs+potter+copenhagen
+      - https://royaldesign.se/serier/bergs-potter-copenhagen
+      - https://royaldesign.se/copenhagen-kruka-gron
+      - https://royaldesign.se/copenhagen-kruka-med-fat-gul
 
   - id: nordicnest
     name: Nordic Nest
     type: html
     optional: true
     groups: [bergs]
+    ignore_query: true
     pages:
-      - https://www.nordicnest.se/varumarken/bergs-potter/
-      - https://www.nordicnest.dk/brands/bergs-potter/
+      - https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/
 
-  - id: finnishdesignshop
-    name: Finnish Design Shop (Danish prices)
-    type: html
-    optional: true
-    groups: [bergs]
-    pages:
-      - https://www.finnishdesignshop.com/en-dk/product/kobenhavner-flowerpot-with-saucer-glazed-emerald-green
-      - https://www.finnishdesignshop.com/en-dk/product/kobenhavner-flowerpot-with-saucer-glazed-amber-yellow
-
-  - id: illums
-    name: Illums Bolighus
-    type: html
-    optional: true
-    groups: [bergs]
-    require: "bergs"
-    pages:
-      - https://www.illumsbolighus.dk/search?q=bergs+potter+copenhagen
+  # Tried and removed: Finnish Design Shop (blocks automated visitors) and
+  # Illums Bolighus (search shows no Bergs Potter Copenhagen pots).

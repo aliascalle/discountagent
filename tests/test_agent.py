@@ -73,6 +73,23 @@ class JsonLd(unittest.TestCase):
         self.assertEqual(watch_for(items[1]["_match_text"]), "bergs-copenhagen-yellow-25")
 
 
+class NordicNestStyle(unittest.TestCase):
+    def test_price_specification_list_and_nested_price(self):
+        page = """<script type="application/ld+json">{"@type":"Product","name":"Köpenhamn kruka glaserad Ø21 cm, Emerald Green (grön)",
+          "url":"https://nn.se/kopenhamn?variantId=1","offers":{"@type":"Offer",
+          "shippingDetails":{"shippingRate":{"@type":"MonetaryAmount","currency":"SEK","value":"0.00"}},
+          "priceSpecification":[{"@type":"UnitPriceSpecification","price":"517.00","priceCurrency":"SEK"},
+            {"@type":"UnitPriceSpecification","price":"760.00","priceCurrency":"SEK","priceType":"https://schema.org/StrikethroughPrice"}]}}</script>"""
+        items = da.products_from_jsonld(BeautifulSoup(page, "html.parser"), "https://nn.se/x", SRC)
+        self.assertEqual((items[0]["price"], items[0]["regular_price"], items[0]["currency"]), (517, 760, "SEK"))
+        self.assertEqual(watch_for(items[0]["_match_text"]), "bergs-copenhagen-green-21")
+        state = {"p": {"name": "Köpenhamn kruka", "variantName": "Mineral White (vit), Ø18 cm",
+                       "price": {"current": {"inclVat": 517}, "regular": {"inclVat": 760}}}}
+        page = f"<script>self.data = {json.dumps(state)}; // price {'.' * 200}</script>"
+        items = da.products_from_embedded_json(BeautifulSoup(page, "html.parser"), "https://nn.se/b", SRC)
+        self.assertEqual((items[0]["price"], items[0]["regular_price"]), (517, 760))
+
+
 class Promos(unittest.TestCase):
     def test_codes_and_campaigns(self):
         page = """<div class="banner"><p>Black Week! Använd koden BLACK25 för 25% rabatt</p></div>
