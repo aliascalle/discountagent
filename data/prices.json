@@ -1,0 +1,641 @@
+{
+  "last_run": "2026-11-22T04:51:09+00:00",
+  "items": {
+    "nordicnest|https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn-kruka-glaserad-14-cm/?variantId=46741-03|": {
+      "source": "nordicnest",
+      "shop": "Nordic Nest",
+      "title": "Köpenhamn kruka glaserad, Grön, Ø21 cm",
+      "variant": "",
+      "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn-kruka-glaserad-14-cm/?variantId=46741-03",
+      "price": 960.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": false,
+      "watch_id": "bergs-copenhagen-green-21",
+      "watch_name": "Bergs Potter Copenhagen green 21 cm",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 960.0
+    },
+    "nordicnest|https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn-kruka-glaserad-14-cm/?variantId=46741-04|": {
+      "source": "nordicnest",
+      "shop": "Nordic Nest",
+      "title": "Köpenhamn kruka glaserad, Gul, Ø21 cm",
+      "variant": "",
+      "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn-kruka-glaserad-14-cm/?variantId=46741-04",
+      "price": 806.0,
+      "regular_price": 960.0,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": true,
+      "watch_id": "bergs-copenhagen-yellow-21",
+      "watch_name": "Bergs Potter Copenhagen yellow 21 cm",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 806.0
+    },
+    "nordicnest|https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn-kruka-glaserad-14-cm/?variantId=46742-03|": {
+      "source": "nordicnest",
+      "shop": "Nordic Nest",
+      "title": "Köpenhamn kruka glaserad, Grön, Ø25 cm",
+      "variant": "",
+      "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn-kruka-glaserad-14-cm/?variantId=46742-03",
+      "price": 1200.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": false,
+      "watch_id": "bergs-copenhagen-green-25",
+      "watch_name": "Bergs Potter Copenhagen green 25 cm",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 1200.0
+    },
+    "nordicnest|https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn-kruka-glaserad-14-cm/?variantId=46742-04|": {
+      "source": "nordicnest",
+      "shop": "Nordic Nest",
+      "title": "Köpenhamn kruka glaserad, Gul, Ø25 cm",
+      "variant": "",
+      "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn-kruka-glaserad-14-cm/?variantId=46742-04",
+      "price": 1199.0,
+      "regular_price": 1200.0,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": true,
+      "watch_id": "bergs-copenhagen-yellow-25",
+      "watch_name": "Bergs Potter Copenhagen yellow 25 cm",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 1199.0
+    },
+    "ps-shop|https://shop-ps.se/products/carbon-steel-frying-pan-32-cm-12-5?variant=37426310054064|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kolstålspanna 32cm",
+      "variant": "",
+      "url": "https://shop-ps.se/products/carbon-steel-frying-pan-32-cm-12-5?variant=37426310054064",
+      "price": 509.0,
+      "regular_price": 849.0,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": true,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 509.0
+    },
+    "ps-shop|https://shop-ps.se/products/chef-kolstalspanna-light-pro-26cm?variant=53942048063824|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Chef kolstålspanna light PRO 26cm",
+      "variant": "",
+      "url": "https://shop-ps.se/products/chef-kolstalspanna-light-pro-26cm?variant=53942048063824",
+      "price": 999.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": false,
+      "on_sale": false,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 999.0
+    },
+    "ps-shop|https://shop-ps.se/products/kit-kolstalspanna-28-24-cm?variant=49358631633232|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kit Kolstålspanna 28 + 24 cm",
+      "variant": "",
+      "url": "https://shop-ps.se/products/kit-kolstalspanna-28-24-cm?variant=49358631633232",
+      "price": 899.0,
+      "regular_price": 1398.0,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": true,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 899.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspanna-24cm-pincett?variant=49717975351632|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kolstålspanna 24cm + Chef pincett",
+      "variant": "",
+      "url": "https://shop-ps.se/products/kolstalspanna-24cm-pincett?variant=49717975351632",
+      "price": 649.0,
+      "regular_price": 948.0,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": true,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 649.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspanna-26cm?variant=49151990530384|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kolstålspanna 26cm",
+      "variant": "",
+      "url": "https://shop-ps.se/products/kolstalspanna-26cm?variant=49151990530384",
+      "price": 407.0,
+      "regular_price": 679.0,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": true,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 407.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspanna-28cm-pincett-pa-kopet?variant=51477787312464|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kolstålspanna 28cm, pincett på köpet",
+      "variant": "",
+      "url": "https://shop-ps.se/products/kolstalspanna-28cm-pincett-pa-kopet?variant=51477787312464",
+      "price": 1048.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": false,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 1048.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspanna-28cm?variant=37679080571056|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kolstålspanna 28cm",
+      "variant": "",
+      "url": "https://shop-ps.se/products/kolstalspanna-28cm?variant=37679080571056",
+      "price": 449.0,
+      "regular_price": 749.0,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": true,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 449.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspanna-pincett?variant=49769793356112|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kolstålspanna 24cm - pincett på köpet",
+      "variant": "",
+      "url": "https://shop-ps.se/products/kolstalspanna-pincett?variant=49769793356112",
+      "price": 948.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": false,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 948.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspanna?variant=41049204424880|20cm": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kolstålspanna",
+      "variant": "20cm",
+      "url": "https://shop-ps.se/products/kolstalspanna?variant=41049204424880",
+      "price": 549.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": false,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 549.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspanna?variant=41049204457648|24cm": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kolstålspanna",
+      "variant": "24cm",
+      "url": "https://shop-ps.se/products/kolstalspanna?variant=41049204457648",
+      "price": 649.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": false,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 649.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspanna?variant=41049204490416|28cm": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kolstålspanna",
+      "variant": "28cm",
+      "url": "https://shop-ps.se/products/kolstalspanna?variant=41049204490416",
+      "price": 749.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": false,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 749.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspanna?variant=41049204523184|32cm": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kolstålspanna",
+      "variant": "32cm",
+      "url": "https://shop-ps.se/products/kolstalspanna?variant=41049204523184",
+      "price": 849.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": false,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 849.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspannor-20cm-32cm?variant=41324612845744|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kit: Kolstålspannor 20cm & 32cm",
+      "variant": "",
+      "url": "https://shop-ps.se/products/kolstalspannor-20cm-32cm?variant=41324612845744",
+      "price": 1099.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": false,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 1099.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspannor-kit-20cm-24cm?variant=41344278560944|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kit: Kolstålspannor 20cm & 24cm",
+      "variant": "",
+      "url": "https://shop-ps.se/products/kolstalspannor-kit-20cm-24cm?variant=41344278560944",
+      "price": 999.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": false,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 999.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspannor-kit-24cm-28cm?variant=41344277282992|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kit: Kolstålspannor 24cm & 28cm",
+      "variant": "",
+      "url": "https://shop-ps.se/products/kolstalspannor-kit-24cm-28cm?variant=41344277282992",
+      "price": 1398.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": false,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 1398.0
+    },
+    "ps-shop|https://shop-ps.se/products/kolstalspannor-kit-4-delars?variant=41344277971120|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kit: Kolstålspannor 4-delar",
+      "variant": "",
+      "url": "https://shop-ps.se/products/kolstalspannor-kit-4-delars?variant=41344277971120",
+      "price": 2199.0,
+      "regular_price": null,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": false,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 2199.0
+    },
+    "ps-shop|https://shop-ps.se/products/kopia-av-kolstalspanna-24?variant=39374965964976|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kolstålspanna 24cm",
+      "variant": "",
+      "url": "https://shop-ps.se/products/kopia-av-kolstalspanna-24?variant=39374965964976",
+      "price": 389.0,
+      "regular_price": 649.0,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": true,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 389.0
+    },
+    "ps-shop|https://shop-ps.se/products/kopia-av-kolstalspanna-24cm?variant=39374968651952|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Kolstålspanna 20 cm",
+      "variant": "",
+      "url": "https://shop-ps.se/products/kopia-av-kolstalspanna-24cm?variant=39374968651952",
+      "price": 329.0,
+      "regular_price": 549.0,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": true,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 329.0
+    },
+    "ps-shop|https://shop-ps.se/products/wokpanna-kolstal?variant=47215161901392|": {
+      "source": "ps-shop",
+      "shop": "Professional Secrets (shop-ps.se)",
+      "title": "Wokpanna i lättvikt kolstål, 4l",
+      "variant": "",
+      "url": "https://shop-ps.se/products/wokpanna-kolstal?variant=47215161901392",
+      "price": 539.0,
+      "regular_price": 899.0,
+      "currency": "SEK",
+      "available": true,
+      "on_sale": true,
+      "watch_id": "ps-carbon-pan",
+      "watch_name": "Professional Secrets carbon steel pan",
+      "first_seen": "2026-11-22T04:51:09+00:00",
+      "last_seen": "2026-11-22T04:51:09+00:00",
+      "lowest_price": 539.0
+    }
+  },
+  "promos": {
+    "ps-shop": {
+      "codes": {},
+      "snippets": {
+        "kolstålspanna #cm rea kolstålspanna #cm ordinarie pris # sek ordinarie pris # sek försäljningspris # sek rea": {
+          "text": "Kolstålspanna 28cm Rea Kolstålspanna 28cm Ordinarie pris 449 SEK Ordinarie pris 749 SEK Försäljningspris 449 SEK Rea",
+          "url": "https://shop-ps.se"
+        },
+        "kökssläng #-pack rea kökssläng #-pack ordinarie pris # sek ordinarie pris # sek försäljningspris # sek rea": {
+          "text": "Kökssläng 2-pack Rea Kökssläng 2-pack Ordinarie pris 101 SEK Ordinarie pris 169 SEK Försäljningspris 101 SEK Rea",
+          "url": "https://shop-ps.se"
+        },
+        "matlagningssked rea matlagningssked ordinarie pris # sek ordinarie pris # sek försäljningspris # sek rea": {
+          "text": "Matlagningssked Rea Matlagningssked Ordinarie pris 179 SEK Ordinarie pris 299 SEK Försäljningspris 179 SEK Rea",
+          "url": "https://shop-ps.se"
+        },
+        "blandskål #,#l rea blandskål #,#l ordinarie pris # sek ordinarie pris # sek försäljningspris # sek rea": {
+          "text": "Blandskål 1,2l Rea Blandskål 1,2l Ordinarie pris 139 SEK Ordinarie pris 279 SEK Försäljningspris 139 SEK Rea",
+          "url": "https://shop-ps.se"
+        },
+        "sauteuse #l rea sauteuse #l ordinarie pris # sek ordinarie pris #,# sek försäljningspris # sek rea": {
+          "text": "Sauteuse 3l Rea Sauteuse 3l Ordinarie pris 659 SEK Ordinarie pris 1,099 SEK Försäljningspris 659 SEK Rea",
+          "url": "https://shop-ps.se"
+        },
+        "stekpincett rea stekpincett ordinarie pris # sek ordinarie pris # sek försäljningspris # sek rea": {
+          "text": "Stekpincett Rea Stekpincett Ordinarie pris 179 SEK Ordinarie pris 299 SEK Försäljningspris 179 SEK Rea",
+          "url": "https://shop-ps.se"
+        },
+        "stekspade rea stekspade ordinarie pris # sek ordinarie pris # sek försäljningspris # sek rea": {
+          "text": "Stekspade Rea Stekspade Ordinarie pris 179 SEK Ordinarie pris 299 SEK Försäljningspris 179 SEK Rea",
+          "url": "https://shop-ps.se"
+        },
+        "köksredskap minst # unika egenskaper i varje verktyg. # års garanti. fri frakt... köksredskap": {
+          "text": "Köksredskap Minst 3 unika egenskaper i varje verktyg. 30 års garanti. Fri frakt... Köksredskap",
+          "url": "https://shop-ps.se"
+        },
+        "ordinarie pris # sek ordinarie pris # sek försäljningspris # sek rea slutsåld": {
+          "text": "Ordinarie pris 179 SEK Ordinarie pris 299 SEK Försäljningspris 179 SEK Rea Slutsåld",
+          "url": "https://shop-ps.se"
+        },
+        "black week": {
+          "text": "Black Week",
+          "url": "https://shop-ps.se"
+        },
+        "matlagningsgaffel rea matlagningsgaffel ordinarie pris # sek ordinarie pris # sek försäljningspris # sek rea": {
+          "text": "Matlagningsgaffel Rea Matlagningsgaffel Ordinarie pris 179 SEK Ordinarie pris 299 SEK Försäljningspris 179 SEK Rea",
+          "url": "https://shop-ps.se/collections/bastsaljare"
+        },
+        "kastrullkit rea kastrullkit ordinarie pris #,# sek ordinarie pris #,# sek försäljningspris #,# sek rea": {
+          "text": "Kastrullkit Rea Kastrullkit Ordinarie pris 1,999 SEK Ordinarie pris 3,597 SEK Försäljningspris 1,999 SEK Rea",
+          "url": "https://shop-ps.se/collections/bastsaljare"
+        },
+        "kockens skopa rea kockens skopa ordinarie pris # sek ordinarie pris # sek försäljningspris # sek rea": {
+          "text": "Kockens skopa Rea Kockens skopa Ordinarie pris 209 SEK Ordinarie pris 349 SEK Försäljningspris 209 SEK Rea",
+          "url": "https://shop-ps.se/collections/bastsaljare"
+        },
+        "kockens visp rea kockens visp ordinarie pris # sek ordinarie pris # sek försäljningspris # sek rea": {
+          "text": "Kockens visp Rea Kockens visp Ordinarie pris 179 SEK Ordinarie pris 299 SEK Försäljningspris 179 SEK Rea",
+          "url": "https://shop-ps.se/collections/bastsaljare"
+        },
+        "kolstålspanna #cm ordinarie pris # sek ordinarie pris # sek försäljningspris # sek rea": {
+          "text": "Kolstålspanna 28cm Ordinarie pris 449 SEK Ordinarie pris 749 SEK Försäljningspris 449 SEK Rea",
+          "url": "https://shop-ps.se/collections/bastsaljare"
+        },
+        "kolstålspanna #cm rea": {
+          "text": "Kolstålspanna 32cm Rea",
+          "url": "https://shop-ps.se/collections/bastsaljare"
+        },
+        "* indikerar obligatoriska fält prenumerera på vårt nyhetsbrev och ​ få 20% rabatt på hela ditt första köp!* e-post * prenumerera på nyhetsbrev": {
+          "text": "* Indikerar obligatoriska fält Prenumerera på vårt nyhetsbrev och ​ få 20% rabatt på hela ditt första köp!* E-post * Prenumerera på nyhetsbrev",
+          "url": "https://www.professionalsecrets.se/"
+        },
+        "prenumerera på vårt nyhetsbrev och få 20% på hela ditt första köp. kan ej kombineras med andra rabatter under black week": {
+          "text": "Prenumerera på vårt nyhetsbrev och få 20% på hela ditt första köp. Kan ej kombineras med andra rabatter under Black Week",
+          "url": "https://www.professionalsecrets.se/"
+        },
+        "mysiga för #kr sprid ljus under höstkvällen fr 75% rabatt på solcellsbelysning för trädgården. noll kr i driftskostnad": {
+          "text": "Mysiga FÖR 0KR Sprid ljus under höstkvällen Fr 75% rabatt på solcellsbelysning för trädgården. NOLL kr i driftskostnad",
+          "url": "https://www.professionalsecrets.se/"
+        },
+        "professional secrets black week #-# nov": {
+          "text": "PROFESSIONAL SECRETS BLACK WEEK 21-29 nov",
+          "url": "https://www.professionalsecrets.se/"
+        }
+      }
+    },
+    "royaldesign": {
+      "codes": {},
+      "snippets": {
+        "nyheter kampanjer möbler belysning servering inredning textil & mattor köket förvaring jul utemöbler varumärken rum inspiration": {
+          "text": "Nyheter Kampanjer Möbler Belysning Servering Inredning Textil & Mattor Köket Förvaring Jul Utemöbler Varumärken Rum Inspiration",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "*fri frakt tillämpas vid ombudsleverans via postnord. detta leveransalternativ är endast tillgängligt för fraktklass (s-m).": {
+          "text": "*Fri frakt tillämpas vid ombudsleverans via PostNord. Detta leveransalternativ är endast tillgängligt för fraktklass (S-M).",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "högtider & säsong alla hjärtans dag påsken utomhus mumin presenttips midsommar singles day black friday julen": {
+          "text": "Högtider & säsong Alla hjärtans dag Påsken Utomhus Mumin Presenttips Midsommar Singles Day Black Friday Julen",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "- 26 % black week bergs potter copenhagen kruka grön # cm # kr # kr leveranstid: #-# veckor": {
+          "text": "- 26 % BLACK WEEK Bergs Potter Copenhagen Kruka Grön 14 cm 372 kr 505 kr Leveranstid: 1-2 veckor",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "- 25 % black week bergs potter copenhagen kruka grön # cm # kr # kr tillfälligt slut": {
+          "text": "- 25 % BLACK WEEK Bergs Potter Copenhagen Kruka Grön 18 cm 570 kr 760 kr Tillfälligt slut",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "- 25 % black week bergs potter köpenhamn kruka rose, # cm # kr # kr i webblager": {
+          "text": "- 25 % BLACK WEEK Bergs Potter Köpenhamn Kruka Rose, 16 cm 195 kr 260 kr I webblager",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "- 8 % black week bergs potter copenhagen kruka grön # cm # kr # kr i webblager": {
+          "text": "- 8 % BLACK WEEK Bergs Potter Copenhagen Kruka Grön 10 cm 259 kr 280 kr I webblager",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "- 25 % black week bergs potter köpenhamn kruka grå, # cm # kr # kr i webblager": {
+          "text": "- 25 % BLACK WEEK Bergs Potter Köpenhamn Kruka Grå, 18 cm 233 kr 310 kr I webblager",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "- 7 % black week bergs potter köpenhamn kruka grå, # cm # kr # kr i webblager": {
+          "text": "- 7 % BLACK WEEK Bergs Potter Köpenhamn Kruka Grå, 25 cm 462 kr 498 kr I webblager",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "- 7 % bergs potter köpenhamn kruka rose, # cm # kr # kr i webblager": {
+          "text": "- 7 % Bergs Potter Köpenhamn Kruka Rose, 25 cm 455 kr 490 kr I webblager",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "- 7 % bergs potter köpenhamn kruka grå, # cm # kr # kr i webblager": {
+          "text": "- 7 % Bergs Potter Köpenhamn Kruka Grå, 21 cm 329 kr 355 kr I webblager",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "black week - upp till 70%": {
+          "text": "BLACK WEEK - UPP TILL 70%",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "black week upp till 70%": {
+          "text": "BLACK WEEK UPP TILL 70%",
+          "url": "https://royaldesign.se/serier/bergs-potter-copenhagen"
+        },
+        "fri frakt över # kr* snabba och flexibla leveranser öppet köp till # januari": {
+          "text": "Fri frakt över 499 kr* Snabba och flexibla leveranser Öppet köp till 31 januari",
+          "url": "https://royaldesign.se/copenhagen-kruka-gron"
+        },
+        "fri frakt i webblager": {
+          "text": "Fri frakt I webblager",
+          "url": "https://royaldesign.se/copenhagen-kruka-gron"
+        },
+        "- 8 % black week": {
+          "text": "- 8 % BLACK WEEK",
+          "url": "https://royaldesign.se/copenhagen-kruka-gron"
+        }
+      }
+    },
+    "nordicnest": {
+      "codes": {},
+      "snippets": {
+        "dukning & servering inredning kök & matlagning belysning mattor & textil möbler julshop black weekend mina sidor mina favoriter kundservice": {
+          "text": "Dukning & Servering Inredning Kök & Matlagning Belysning Mattor & Textil Möbler Julshop BLACK WEEKEND Mina sidor Mina favoriter Kundservice",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "dukning & servering inredning kök & matlagning belysning mattor & textil möbler julshop black weekend nyheter varumärken inspiration": {
+          "text": "Dukning & Servering Inredning Kök & Matlagning Belysning Mattor & Textil Möbler Julshop BLACK WEEKEND Nyheter Varumärken Inspiration",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "nyheter varumärken inspiration presenttips rum bästsäljare kundklubb företag black weekend mina sidor mina favoriter kundservice": {
+          "text": "Nyheter Varumärken Inspiration Presenttips Rum Bästsäljare Kundklubb Företag BLACK WEEKEND Mina sidor Mina favoriter Kundservice",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "i lager black weekend -25% bergs potter köpenhamn kruka glaserad, mineral white (vit), ø# cm # kr # # kr": {
+          "text": "I lager BLACK WEEKEND -25% Bergs Potter Köpenhamn kruka glaserad, Mineral White (vit), Ø25 cm 900 kr 1 200 kr",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "i lager black weekend -25% bergs potter köpenhamn kruka glaserad, mineral white (vit), ø# cm # kr # kr": {
+          "text": "I lager BLACK WEEKEND -25% Bergs Potter Köpenhamn kruka glaserad, Mineral White (vit), Ø14 cm 379 kr 505 kr",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "i lager black weekend -37% bergs potter köpenhamn kruka glaserad, mineral white (vit), ø# cm # kr # kr": {
+          "text": "I lager BLACK WEEKEND -37% Bergs Potter Köpenhamn kruka glaserad, Mineral White (vit), Ø12 cm 259 kr 410 kr",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "i lager black weekend -32% bergs potter köpenhamn kruka glaserad, mineral white (vit), ø# cm # kr # kr": {
+          "text": "I lager BLACK WEEKEND -32% Bergs Potter Köpenhamn kruka glaserad, Mineral White (vit), Ø18 cm 517 kr 760 kr",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "i lager black weekend -10% bergs potter köpenhamn kruka glaserad, sand stone (beige), ø# cm # kr # kr": {
+          "text": "I lager BLACK WEEKEND -10% Bergs Potter Köpenhamn kruka glaserad, Sand Stone (beige), Ø14 cm 454 kr 505 kr",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "i lager black weekend -22% bergs potter köpenhamn kruka glaserad, sand stone (beige), ø# cm # kr # kr": {
+          "text": "I lager BLACK WEEKEND -22% Bergs Potter Köpenhamn kruka glaserad, Sand Stone (beige), Ø12 cm 320 kr 410 kr",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "på väg till oss black weekend -16% bergs potter köpenhamn kruka glaserad, gul, ø# cm # kr # kr": {
+          "text": "På väg till oss BLACK WEEKEND -16% Bergs Potter Köpenhamn kruka glaserad, Gul, Ø21 cm 806 kr 960 kr",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "i lager black weekend -31% bergs potter köpenhamn kruka glaserad, gul, ø# cm # kr # kr": {
+          "text": "I lager BLACK WEEKEND -31% Bergs Potter Köpenhamn kruka glaserad, Gul, Ø14 cm 350 kr 505 kr",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "i lager black weekend -19% bergs potter köpenhamn kruka ø# cm #-pack, grey # kr # kr": {
+          "text": "I lager BLACK WEEKEND -19% Bergs Potter Köpenhamn kruka Ø10 cm 3-pack, Grey 339 kr 420 kr",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "i lager black weekend -19% bergs potter köpenhamn kruka ø# cm #-pack, rosa # kr # kr": {
+          "text": "I lager BLACK WEEKEND -19% Bergs Potter Köpenhamn kruka Ø10 cm 3-pack, Rosa 339 kr 420 kr",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "i lager black weekend -20% bergs potter köpenhamn vas, klar, # cm # kr # # kr": {
+          "text": "I lager BLACK WEEKEND -20% Bergs Potter Köpenhamn vas, Klar, 21 cm 880 kr 1 100 kr",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "i lager black weekend -17% bergs potter köpenhamn kruka ø# cm, grå # kr # kr": {
+          "text": "I lager BLACK WEEKEND -17% Bergs Potter Köpenhamn kruka Ø12 cm, Grå 145 kr 175 kr",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "black weekend : upp till 70%": {
+          "text": "Black Weekend : Upp till 70%",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "fri frakt över # kr*": {
+          "text": "FRI FRAKT ÖVER 495 KR*",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "black friday #": {
+          "text": "Black Friday 2026",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "# kr rabatt": {
+          "text": "100 kr rabatt",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "cyber monday": {
+          "text": "Cyber Monday",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        },
+        "kampanjer": {
+          "text": "Kampanjer",
+          "url": "https://www.nordicnest.se/varumarken/bergs-potter/kopenhamn/"
+        }
+      }
+    }
+  }
+}
