@@ -155,5 +155,44 @@ class ShopifyReader(unittest.TestCase):
         self.assertFalse(items[1]["available"])
 
 
+class OtherReaders(unittest.TestCase):
+    def test_text_price_professional_secrets_style(self):
+        page = """<html><head><title>PS kolstålspanna 28cm - PROFESSIONAL SECRETS</title></head>
+        <body><nav>Fri frakt över 500kr</nav><div><h2>PS kolstålspanna 28cm</h2>
+        <p><strong>NU 40<span>7kr</span></strong>&nbsp;(ord 679kr)</p></div></body></html>"""
+        items = da.products_from_text(BeautifulSoup(page, "html.parser"), "https://ps.se/butik-28.html",
+                                      {"id": "ps", "name": "PS"})
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0]["title"], "PS kolstålspanna 28cm")
+        self.assertEqual(items[0]["price"], 407)
+        self.assertEqual(items[0]["regular_price"], 679)
+        self.assertEqual(items[0]["currency"], "SEK")
+        self.assertEqual(watch_for(items[0]["_match_text"]), "ps-carbon-pan")
+
+    def test_text_price_without_now(self):
+        page = "<title>Kit Kolstålspanna 24cm 28cm - PS</title><p>1 398kr</p><p>Spara 500kr</p>"
+        items = da.products_from_text(BeautifulSoup(page, "html.parser"), "https://ps.se/kit", SRC)
+        self.assertEqual(items[0]["price"], 1398)
+        self.assertIsNone(items[0]["regular_price"])
+
+    def test_embedded_json_royal_design_style(self):
+        state = {"products": [{"name": "Copenhagen Pot Yellow, Ø21 cm", "url": "/copenhagen-pot-yellow?p=220205",
+                               "brand": "Bergs Potter",
+                               "price": {"currency": "SEK", "salesPriceInclVat": 349, "recommendedPriceInclVat": 449}},
+                              {"name": "Something else", "price": {"currency": "SEK", "salesPriceInclVat": 156}}]}
+        page = f"<script>window.__STATE__ = {json.dumps(state)};</script>"
+        items = da.products_from_embedded_json(BeautifulSoup(page, "html.parser"), "https://royaldesign.se/s", SRC)
+        self.assertEqual(len(items), 2)
+        pot = items[0] if "Copenhagen" in items[0]["title"] else items[1]
+        self.assertEqual((pot["price"], pot["regular_price"], pot["currency"]), (349, 449, "SEK"))
+        self.assertEqual(pot["url"], "https://royaldesign.se/copenhagen-pot-yellow?p=220205")
+        self.assertEqual(watch_for(pot["_match_text"]), "bergs-copenhagen-yellow-21")
+
+    def test_scandinavian_names(self):
+        self.assertEqual(watch_for("Köpenhamn kruka glaserad 21 cm grön"), "bergs-copenhagen-green-21")
+        self.assertEqual(watch_for("Københavner flowerpot glazed amber yellow Ø25"), "bergs-copenhagen-yellow-25")
+        self.assertEqual(watch_for("Kobenhavner flowerpot emerald green 21 cm"), "bergs-copenhagen-green-21")
+
+
 if __name__ == "__main__":
     unittest.main()

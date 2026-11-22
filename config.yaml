@@ -25,22 +25,22 @@ products:
   - id: bergs-copenhagen-green-21
     name: Bergs Potter Copenhagen green 21 cm
     group: bergs
-    match: ["copenhagen", "gr[øöo]n|green", "(?<![\\d.,])21(?![\\d.,])"]
+    match: ["copenhagen|k[øoö]benhavn|k[öo]penhamn", "gr[øöo]n|green", "(?<![\\d.,])21(?![\\d.,])"]
 
   - id: bergs-copenhagen-green-25
     name: Bergs Potter Copenhagen green 25 cm
     group: bergs
-    match: ["copenhagen", "gr[øöo]n|green", "(?<![\\d.,])25(?![\\d.,])"]
+    match: ["copenhagen|k[øoö]benhavn|k[öo]penhamn", "gr[øöo]n|green", "(?<![\\d.,])25(?![\\d.,])"]
 
   - id: bergs-copenhagen-yellow-21
     name: Bergs Potter Copenhagen yellow 21 cm
     group: bergs
-    match: ["copenhagen", "\\bgul\\b|yellow", "(?<![\\d.,])21(?![\\d.,])"]
+    match: ["copenhagen|k[øoö]benhavn|k[öo]penhamn", "\\bgul\\b|yellow", "(?<![\\d.,])21(?![\\d.,])"]
 
   - id: bergs-copenhagen-yellow-25
     name: Bergs Potter Copenhagen yellow 25 cm
     group: bergs
-    match: ["copenhagen", "\\bgul\\b|yellow", "(?<![\\d.,])25(?![\\d.,])"]
+    match: ["copenhagen|k[øoö]benhavn|k[öo]penhamn", "\\bgul\\b|yellow", "(?<![\\d.,])25(?![\\d.,])"]
 
 # ---------------------------------------------------------------------
 # WHERE to look.
@@ -56,32 +56,42 @@ products:
 # ---------------------------------------------------------------------
 sources:
   # --- The brands' own shops ------------------------------------------
+  # Professional Secrets' web shop runs on Shopify at shop-ps.se.
+  - id: ps-shop
+    name: Professional Secrets (shop-ps.se)
+    type: shopify
+    base_url: https://shop-ps.se
+    currency: SEK
+    groups: [pans]
+    optional: true
+    promo_pages:
+      - https://shop-ps.se/collections/bastsaljare
+
+  # Their main site professionalsecrets.se shows prices as text ("NU 449kr (ord 749kr)").
   - id: professionalsecrets
     name: Professional Secrets
-    type: auto
+    type: html
+    text_prices: true
+    currency: SEK
     base_url: https://www.professionalsecrets.se
     groups: [pans]
     pages:
+      - https://www.professionalsecrets.se/butik-stekpannor.html
       - https://www.professionalsecrets.se/
-      - https://www.professionalsecrets.se/search?q=kolst%C3%A5l
-    promo_pages:
-      - https://www.professionalsecrets.se/collections/sale
-      - https://www.professionalsecrets.se/pages/kampanj
 
+  # bergspotter.com shows a "Checking your browser" page to automated visitors,
+  # so it usually can't be read. Kept in case that changes; the retailers below
+  # cover the Copenhagen pots.
   - id: bergspotter
     name: Bergs Potter
     type: auto
+    optional: true
     base_url: https://bergspotter.com
     groups: [bergs]
-    pages:
-      - https://bergspotter.com/search?q=copenhagen
-    promo_pages:
-      - https://bergspotter.com/collections/sale
 
   # --- Price comparison ------------------------------------------------
-  # Prisjakt often blocks automated visitors. If so it is simply skipped.
-  # Tip: if you find the exact product page on prisjakt.nu, paste its
-  # address (e.g. https://www.prisjakt.nu/produkt.php?p=1234567) under pages.
+  # Prisjakt also blocks automated visitors ("Just a moment..."). If that
+  # changes it will be used automatically.
   - id: prisjakt
     name: Prisjakt (lowest price)
     type: html
@@ -93,16 +103,16 @@ sources:
       - https://www.prisjakt.nu/search?search=bergs%20potter%20copenhagen
       - https://www.prisjakt.nu/search?search=professional%20secrets%20kolst%C3%A5l
 
-  # --- Swedish / Danish retailers (Bergs Potter) ----------------------
-  # These are search pages. If a shop changes its search address, or you
-  # know a better shop, just edit or add an entry like these.
+  # --- Retailers selling Bergs Potter Copenhagen ----------------------
+  # Shops call the pot "Copenhagen", "Köpenhamn" or "Københavner".
   - id: royaldesign
     name: Royal Design
     type: html
     optional: true
     groups: [bergs]
-    require: "bergs"
     pages:
+      - https://royaldesign.se/serie/bergs-potter-copenhagen
+      - https://royaldesign.se/bergs-potter
       - https://royaldesign.se/search?q=bergs+potter+copenhagen
 
   - id: nordicnest
@@ -110,9 +120,18 @@ sources:
     type: html
     optional: true
     groups: [bergs]
-    require: "bergs"
     pages:
-      - https://www.nordicnest.se/search/?q=bergs+potter+copenhagen
+      - https://www.nordicnest.se/varumarken/bergs-potter/
+      - https://www.nordicnest.dk/brands/bergs-potter/
+
+  - id: finnishdesignshop
+    name: Finnish Design Shop (Danish prices)
+    type: html
+    optional: true
+    groups: [bergs]
+    pages:
+      - https://www.finnishdesignshop.com/en-dk/product/kobenhavner-flowerpot-with-saucer-glazed-emerald-green
+      - https://www.finnishdesignshop.com/en-dk/product/kobenhavner-flowerpot-with-saucer-glazed-amber-yellow
 
   - id: illums
     name: Illums Bolighus

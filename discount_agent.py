@@ -446,6 +446,129 @@ def products_from_meta(soup: BeautifulSoup, page_url: str, source: dict) -> list
     return []
 
 
+PRICE_KEYS = ("salesPriceInclVat", "salePrice", "currentPrice", "finalPrice", "sellingPrice", "priceInclVat",
+              "amount", "value", "price", "current")
+REGULAR_KEYS = ("recommendedPriceInclVat", "regularPriceInclVat", "regularPrice", "originalPrice", "listPrice",
+                "compareAtPrice", "compare_at_price", "previousPrice", "beforePrice", "ordinaryPrice", "original")
+NAME_KEYS = ("name", "title", "productName", "displayName")
+URL_KEYS = ("url", "href", "link", "uri", "path", "canonicalUrl", "productUrl", "slug")
+VARIANT_KEYS = ("variantName", "variant", "color", "colour", "size")
+
+
+def _iter_embedded_json(soup: BeautifulSoup):
+    """Yield JSON data that shops embed in <script> tags (window.__STATE__ = {...}, application/json, ...)."""
+    decoder = json.JSONDecoder()
+    for sc in soup.find_all("script"):
+        if sc.get("src") or sc.get("type") == "application/ld+json":
+            continue
+        text = sc.string or sc.get_text() or ""
+        if len(text) < 200 or "price" not in text.lower():
+            continue
+        starts = [0] if text.lstrip()[:1] in "{[" else []
+        starts += [m.end() - 1 for m in re.finditer(r"(?:=|\(|:)\s*[\[{]", text)][:50]
+        consumed = -1
+        for pos in starts:
+            if pos <= consumed:
+                continue
+            try:
+                data, end = decoder.raw_decode(text.lstrip() if pos == 0 else text[pos:])
+            except ValueError:
+                continue
+            consumed = pos + end
+            yield data
+
+
+def _walk_dicts(node, limit=200000):
+    stack, seen = [node], 0
+    while stack and seen < limit:
+        cur = stack.pop()
+        seen += 1
+        if isinstance(cur, dict):
+            yield cur
+            stack.extend(v for v in cur.values() if isinstance(v, (dict, list)))
+        elif isinstance(cur, list):
+            stack.extend(v for v in cur if isinstance(v, (dict, list)))
+
+
+def _first(d: dict, keys):
+    for k in keys:
+        v = d.get(k)
+        if v not in (None, "", [], {}):
+            return v
+    return None
+
+
+def products_from_embedded_json(soup: BeautifulSoup, page_url: str, source: dict) -> list[dict]:
+    items, seen = [], set()
+    for data in _iter_embedded_json(soup):
+        for d in _walk_dicts(data):
+            name = _first(d, NAME_KEYS)
+            price_field = d.get("price", _first(d, ("prices", "pricing", "priceInfo")))
+            if not isinstance(name, str) or price_field is None:
+                continue
+            currency = _first(d, ("currency", "currencyCode", "priceCurrency"))
+            regular = _first(d, REGULAR_KEYS)
+            if isinstance(price_field, dict):
+                price = _first(price_field, PRICE_KEYS)
+                regular = regular or _first(price_field, REGULAR_KEYS)
+                currency = currency or _first(price_field, ("currency", "currencyCode", "priceCurrency"))
+            else:
+                price = _first(d, PRICE_KEYS[:5]) or price_field
+            if isinstance(price, dict):
+                price = _first(price, PRICE_KEYS)
+            if isinstance(regular, dict):
+                regular = _first(regular, PRICE_KEYS)
+            if not isinstance(price, (int, float, str)):
+                continue
+            link = _first(d, URL_KEYS)
+            url = urljoin(page_url, link) if isinstance(link, str) and not link.startswith(("data:", "javascript")) else page_url
+            variant = " ".join(str(d[k]) for k in VARIANT_KEYS if isinstance(d.get(k), (str, int, float)))
+            key = (name, url, variant, str(price))
+            if key in seen:
+                continue
+            seen.add(key)
+            item = make_item(source, title=name, variant=variant, url=url, price=price, regular=regular,
+                             currency=currency if isinstance(currency, str) else None,
+                             available=d.get("inStock", d.get("available", True)) is not False)
+            if item:
+                item["_match_text"] = f"{name} {variant} {urlparse(url).path}"
+                items.append(item)
+    return items
+
+
+TEXT_NOW_RE = re.compile(r"(?i)\b(?:nu|now|pris|price)\s*:?\s*(\d[\d\s.]*(?:,\d{2})?)\s*(?:kr|sek|:-)")
+TEXT_REG_RE = re.compile(r"(?i)\(\s*(?:ord\.?|ordinarie|ord pris|før|tidigare)?\s*:?\s*(\d[\d\s.]*(?:,\d{2})?)\s*(?:kr|sek|:-)\s*\)")
+TEXT_ANY_RE = re.compile(r"(?i)(?<![\w%])(\d{1,3}(?:[ .]?\d{3})*(?:,\d{2})?)\s?(?:kr|sek|:-)(?!\w)")
+
+
+def products_from_text(soup: BeautifulSoup, page_url: str, source: dict) -> list[dict]:
+    """Last resort for simple sites: read 'NU 449kr (ord 749kr)' style prices from the page text."""
+    for tag in soup(["script", "style", "noscript", "header", "footer", "nav"]):
+        tag.decompose()
+    text = " ".join(soup.get_text(" ").split())
+    now = TEXT_NOW_RE.search(text)
+    if now:
+        price = now.group(1)
+        reg = TEXT_REG_RE.search(text[now.end():now.end() + 80])
+    else:
+        anyp = TEXT_ANY_RE.search(text)
+        if not anyp:
+            return []
+        price = anyp.group(1)
+        reg = TEXT_REG_RE.search(text[anyp.end():anyp.end() + 80])
+    title = soup.title.get_text(strip=True) if soup.title else ""
+    title = re.split(r"\s+[-|–]\s+", title)[0]
+    h1 = soup.find("h1")
+    if not title and h1:
+        title = h1.get_text(" ", strip=True)
+    item = make_item(source, title=title, variant="", url=page_url, price=price,
+                     regular=reg.group(1) if reg else None, currency=source.get("currency", "SEK"))
+    if item:
+        item["_match_text"] = f"{title} {urlparse(page_url).path}"
+        return [item]
+    return []
+
+
 def read_html(f: Fetcher, source: dict, watches: list[Watch]) -> list[dict]:
     pages = source.get("pages", [])
     link_re = re.compile(source["link_pattern"], re.I) if source.get("link_pattern") else None
@@ -461,8 +584,15 @@ def read_html(f: Fetcher, source: dict, watches: list[Watch]) -> list[dict]:
         except Exception as exc:
             note(f"{source['name']}: {exc}")
             continue
-        items += products_from_jsonld(soup, page, source)
+        items += products_from_jsonld(soup, page, source) or products_from_embedded_json(soup, page, source)
         host = urlparse(page).netloc
+        # product links listed in JSON-LD ItemLists (search/category pages)
+        for node in _jsonld_nodes(soup):
+            link = node.get("url") if "ListItem" in _types(node) else None
+            if isinstance(link, str):
+                href = urljoin(page, link)
+                if href not in candidates and (not require or require.search(href)) and any(k.search(href) for k in keys):
+                    candidates.append(href)
         for a in soup.find_all("a", href=True):
             href = urljoin(page, a["href"]).split("#")[0]
             if urlparse(href).netloc != host or href in candidates or href in pages:
@@ -484,7 +614,10 @@ def read_html(f: Fetcher, source: dict, watches: list[Watch]) -> list[dict]:
         except Exception as exc:
             note(f"{source['name']}: {exc}")
             continue
-        found = products_from_jsonld(soup, url, source) or products_from_meta(soup, url, source)
+        found = (products_from_jsonld(soup, url, source) or products_from_meta(soup, url, source)
+                 or products_from_embedded_json(soup, url, source))
+        if not found and source.get("text_prices"):
+            found = products_from_text(soup, url, source)
         items += found
     print(f"  HTML pages: {len(pages)} listing pages, {len(candidates[:max_pages])} product pages, {len(items)} prices")
     return items
