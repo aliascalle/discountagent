@@ -1,0 +1,125 @@
+# =====================================================================
+#  Discount agent settings
+#  You can edit this file directly on github.com (click the pencil icon).
+#  Lines starting with # are comments and are ignored.
+# =====================================================================
+
+# Seconds to wait between web requests, to be polite to the shops.
+request_delay_seconds: 1.5
+
+# ---------------------------------------------------------------------
+# WHAT to watch.
+# A product listing matches when ALL the patterns under "match" are found
+# in its name/variant (case doesn't matter, "|" means "or").
+# "exclude" removes listings that contain any of those words.
+# "group" connects products to the shops below.
+# ---------------------------------------------------------------------
+products:
+  - id: ps-carbon-pan
+    name: Professional Secrets carbon steel pan
+    group: pans
+    match:
+      - "kolst[aå]l|carbon|stekpanna|panna|wok|\\bpan\\b|skillet"
+    exclude: "olja|oil|\\block\\b|\\blid\\b|grytlapp|handtagsskydd|sleeve|presentkort|gift ?card|bok\\b"
+
+  - id: bergs-copenhagen-green-21
+    name: Bergs Potter Copenhagen green 21 cm
+    group: bergs
+    match: ["copenhagen", "gr[øöo]n|green", "(?<![\\d.,])21(?![\\d.,])"]
+
+  - id: bergs-copenhagen-green-25
+    name: Bergs Potter Copenhagen green 25 cm
+    group: bergs
+    match: ["copenhagen", "gr[øöo]n|green", "(?<![\\d.,])25(?![\\d.,])"]
+
+  - id: bergs-copenhagen-yellow-21
+    name: Bergs Potter Copenhagen yellow 21 cm
+    group: bergs
+    match: ["copenhagen", "\\bgul\\b|yellow", "(?<![\\d.,])21(?![\\d.,])"]
+
+  - id: bergs-copenhagen-yellow-25
+    name: Bergs Potter Copenhagen yellow 25 cm
+    group: bergs
+    match: ["copenhagen", "\\bgul\\b|yellow", "(?<![\\d.,])25(?![\\d.,])"]
+
+# ---------------------------------------------------------------------
+# WHERE to look.
+#   type: auto   -> works out by itself if the shop is Shopify, WooCommerce
+#                   or a normal web page (recommended)
+#   pages        -> pages to open: product lists, sale pages, search results.
+#                   Product links on them are followed automatically.
+#   promo_pages  -> extra pages only scanned for discount codes / campaigns
+#   require      -> listing must contain this (used for big shops that sell
+#                   many brands)
+#   optional     -> true = don't warn if nothing is found there
+#   enabled      -> false = skip this shop
+# ---------------------------------------------------------------------
+sources:
+  # --- The brands' own shops ------------------------------------------
+  - id: professionalsecrets
+    name: Professional Secrets
+    type: auto
+    base_url: https://professionalsecrets.se
+    groups: [pans]
+    pages:
+      - https://professionalsecrets.se/
+      - https://professionalsecrets.se/collections/all
+      - https://professionalsecrets.se/search?q=kolst%C3%A5l
+    promo_pages:
+      - https://professionalsecrets.se/collections/sale
+      - https://professionalsecrets.se/pages/kampanj
+
+  - id: bergspotter
+    name: Bergs Potter
+    type: auto
+    base_url: https://bergspotter.com
+    groups: [bergs]
+    pages:
+      - https://bergspotter.com/search?q=copenhagen
+    promo_pages:
+      - https://bergspotter.com/collections/sale
+
+  # --- Price comparison ------------------------------------------------
+  # Prisjakt often blocks automated visitors. If so it is simply skipped.
+  # Tip: if you find the exact product page on prisjakt.nu, paste its
+  # address (e.g. https://www.prisjakt.nu/produkt.php?p=1234567) under pages.
+  - id: prisjakt
+    name: Prisjakt (lowest price)
+    type: html
+    optional: true
+    groups: [pans, bergs]
+    require: "bergs|professional ?secrets"
+    link_pattern: "produkt\\.php\\?p=\\d+"
+    pages:
+      - https://www.prisjakt.nu/search?search=bergs%20potter%20copenhagen
+      - https://www.prisjakt.nu/search?search=professional%20secrets%20kolst%C3%A5l
+
+  # --- Swedish / Danish retailers (Bergs Potter) ----------------------
+  # These are search pages. If a shop changes its search address, or you
+  # know a better shop, just edit or add an entry like these.
+  - id: royaldesign
+    name: Royal Design
+    type: html
+    optional: true
+    groups: [bergs]
+    require: "bergs"
+    pages:
+      - https://royaldesign.se/search?q=bergs+potter+copenhagen
+
+  - id: nordicnest
+    name: Nordic Nest
+    type: html
+    optional: true
+    groups: [bergs]
+    require: "bergs"
+    pages:
+      - https://www.nordicnest.se/search/?q=bergs+potter+copenhagen
+
+  - id: illums
+    name: Illums Bolighus
+    type: html
+    optional: true
+    groups: [bergs]
+    require: "bergs"
+    pages:
+      - https://www.illumsbolighus.dk/search?q=bergs+potter+copenhagen

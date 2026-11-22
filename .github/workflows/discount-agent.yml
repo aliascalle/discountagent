@@ -1,0 +1,69 @@
+name: Discount agent
+
+on:
+  schedule:
+    # Every day at 06:17 UTC (07:17 in Sweden in winter, 08:17 in summer).
+    - cron: "17 6 * * *"
+  # Adds a "Run workflow" button on the Actions tab so you can run it by hand.
+  workflow_dispatch:
+    inputs:
+      test_email:
+        description: "Only send a test email (to check the Gmail setup)"
+        type: boolean
+        default: false
+      list_all:
+        description: "Print every product found in the log (to tune config.yaml)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # lets the workflow save the price files back into the repository
+
+concurrency:
+  group: discount-agent
+  cancel-in-progress: false
+
+jobs:
+  check-prices:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Send test email
+        if: ${{ inputs.test_email }}
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python discount_agent.py --test-email
+
+      - name: Check prices
+        if: ${{ !inputs.test_email }}
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python discount_agent.py ${{ inputs.list_all && '--list-all' || '' }}
+
+      - name: Save prices to the repository
+        if: ${{ always() && !inputs.test_email }}
+        run: |
+          git config user.name "discount-agent[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No price changes to save."
+          else
+            git commit -m "Update prices $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
